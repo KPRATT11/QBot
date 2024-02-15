@@ -4,7 +4,7 @@ import org.example.Exceptions.InvalidCommandTypeException
 import org.example.Types.Board
 
 fun main() {
-    val newGame = Game()
+    val newGame = Game(boardSize = 7)
     gameLoop(newGame)
 }
 fun gameLoop(game: Game) {
@@ -17,9 +17,9 @@ fun gameLoop(game: Game) {
 fun getAndExecuteInput(board: Board){
     while (true){
         print("Input : ")
-        val input = readln().split("").drop(1).dropLast(1)
+        val input = readln().split("-")
 
-        val letters = "abcdefghijklmnopq".split("").drop(1).dropLast(1)
+        val letters = "abcdefghijklmnopqrstuvwxyz".split("").drop(1).dropLast(1)
         try {
             if (input.first() !in listOf("W", "0", "1")){
                 throw InvalidCommandTypeException(input.first())

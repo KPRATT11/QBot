@@ -3,12 +3,16 @@ package org.example
 import org.example.Types.Board
 import org.example.Types.Tile
 
-class Game () {
+class Game (
+    private val boardSize: Int = 9
+) {
     val board = generateBoard()
 
-    private fun generateBoard(): Board { return List(18) { upperIt ->
+    private val letters = "acbdefghijklmnopqrstuvwxyz".substring(0, boardSize * 2)
+
+    private fun generateBoard(): Board { return List(boardSize * 2) { upperIt ->
         if (upperIt % 2 != 0){
-            List(18) {
+            List(boardSize * 2) {
                 if (it % 2 != 0){
                     Tile(wall = false)
                 } else {
@@ -16,7 +20,7 @@ class Game () {
                 }
             }
         } else {
-            List(18) { Tile(wall = true) }
+            List(boardSize * 2) { Tile(wall = true) }
         }
     } }
 
@@ -37,8 +41,8 @@ class Game () {
             }
         }.toString()
             .replace(",", " ")
-            .replace("[", "|")
-            .replace("]", "|")
+            .replace("[", "")
+            .replace("]", "")
             .trim()
     }
 
@@ -48,13 +52,19 @@ class Game () {
         else "$formatted "
     }
 
+    private fun printLetterRow(){
+        print("   ")
+        letters.forEach {
+            print("$it  ")
+        }
+        print("\n")
+    }
+
     fun fullGame(){
         println("\n\n\n\n")
-        println("    a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q")
-        println("    _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _")
+        printLetterRow()
         for ((index, value) in board.withIndex()) {
             println("${formatIndex(index)} ${formatRow(value)}")
         }
-        println("    ¯  ¯  ¯  ¯  ¯  ¯  ¯  ¯  ¯  ¯  ¯  ¯  ¯  ¯  ¯  ¯  ¯")
     }
 }
