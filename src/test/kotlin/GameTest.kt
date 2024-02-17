@@ -1,8 +1,8 @@
 import org.example.Command
 import org.example.Game
 import org.example.GameInput
-import org.junit.Test
-import kotlin.test.assertEquals
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.Assertions.assertEquals
 
 class GameTest{
     @Test

@@ -1,7 +1,7 @@
 import org.example.Command
 import org.example.GameInput
-import org.junit.Test
-import kotlin.test.assertEquals
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
 class GameInputTest {
     @Test
@@ -13,9 +13,9 @@ class GameInputTest {
             rows = IntRange(1,4),
             cols = IntRange(0,0)
         )
-        assertEquals(expected = result.rows, actual = expected.rows)
-        assertEquals(expected = result.cols, actual = expected.cols)
-        assertEquals(expected = result.wall, actual = expected.wall)
+        assertEquals(result.rows,expected.rows)
+        assertEquals(result.cols,expected.cols)
+        assertEquals(result.wall,expected.wall)
     }
 
     @Test
