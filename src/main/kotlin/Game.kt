@@ -30,9 +30,9 @@ class Game(
             if (upperIt % 2 != 0) {
                 List(boardSize * 2) {
                     if (it % 2 != 0) {
-                        Tile(wall = false, pos = Pair(it - 1, upperIt - 1))
+                        Tile(wall = false, pos = Pair(it, upperIt))
                     } else {
-                        Tile(wall = true, pos = Pair(it - 1, upperIt - 1))
+                        Tile(wall = true, pos = Pair(it, upperIt))
                     }
                 }
             } else {
@@ -56,12 +56,19 @@ class Game(
     }
 
     private fun handlePlayerMovement(command: Command): Boolean {
+        val endingPos = Pair(command.cols.first, command.rows.first)
         if (command.player == '0'){
-            players.player1.pos = Pair(command.cols.first, command.rows.first)
+            if (!validatePlayerMove(players.player1.pos, endingPos)) return false
+            players.player1.pos = endingPos
         } else {
-            players.player2.pos = Pair(command.cols.first, command.rows.first)
+            if (!validatePlayerMove(players.player2.pos, endingPos)) return false
+            players.player2.pos = endingPos
         }
         return true
+    }
+
+    private fun validatePlayerMove(startingPos: Pair<Int, Int>, endingPos: Pair<Int, Int>): Boolean{
+        return (endingPos.first % 2 != 0 && endingPos.second % 2 != 0)
     }
 }
 

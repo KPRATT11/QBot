@@ -1,3 +1,3 @@
 package org.example
 
-const val Letters = "acbdefghijklmnopqrstuvwxyz"
+const val Letters = "abcdefghijklmnopqrstuvwxyz"
