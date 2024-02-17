@@ -41,8 +41,16 @@ class GameInputTest {
         assertEquals(expected, result)
     }
     @Test
-    fun `should pass validation for command`() {
+    fun `should pass validation for command to place wall`() {
         val input = GameInput("Wa1d1")
+        val result = input.validateInput()
+        val expected = true
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `should pass validation for command to move player`() {
+        val input = GameInput("1a1")
         val result = input.validateInput()
         val expected = true
         assertEquals(expected, result)
