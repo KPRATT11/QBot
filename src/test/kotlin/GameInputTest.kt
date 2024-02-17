@@ -27,6 +27,20 @@ class GameInputTest {
     }
 
     @Test
+    fun `should fail validation for command with incorrect length for wall`() {
+        val input = GameInput("W1")
+        val result = input.validateInput()
+        val expected = false
+        assertEquals(expected, result)
+    }
+    @Test
+    fun `should fail validation for command with incorrect pattern for wall`() {
+        val input = GameInput("W1a1d")
+        val result = input.validateInput()
+        val expected = false
+        assertEquals(expected, result)
+    }
+    @Test
     fun `should pass validation for command`() {
         val input = GameInput("Wa1d1")
         val result = input.validateInput()
