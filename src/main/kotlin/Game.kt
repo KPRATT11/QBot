@@ -18,10 +18,11 @@ class Game(
 
 
     fun handleCommmand(command: Command): Boolean {
-        if (command.wall) {
-            return handleWallPlacement(command)
+        return if (command.wall) {
+            handleWallPlacement(command)
+        } else {
+            handlePlayerMovement(command)
         }
-        return true
     }
 
     private fun generateBoard(): Board {
@@ -54,9 +55,14 @@ class Game(
         return true
     }
 
-//    private fun handlePlayerMovement(command: Command): Boolean {
-//
-//    }
+    private fun handlePlayerMovement(command: Command): Boolean {
+        if (command.player == '0'){
+            players.player1.pos = Pair(command.cols.first, command.rows.first)
+        } else {
+            players.player2.pos = Pair(command.cols.first, command.rows.first)
+        }
+        return true
+    }
 }
 
 

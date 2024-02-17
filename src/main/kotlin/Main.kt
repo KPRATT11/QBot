@@ -8,8 +8,10 @@ fun gameLoop(game: Game) {
     while(true){
         game.printer.fullGame()
         val command = getInput()
+        game.handleCommmand(command)
     }
 }
+
 
 fun getInput(): Command {
     val inputPrefix = "Input: "

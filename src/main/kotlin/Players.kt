@@ -7,6 +7,6 @@ data class Players(
 )
 
 data class Player(
-    val pos: Pair<Int, Int>,
+    var pos: Pair<Int, Int>,
     val walls: Int
 )
