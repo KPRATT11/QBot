@@ -15,6 +15,7 @@ class GameInput(input: String) {
                 wall = false,
                 rows = IntRange(input[2].toInt(), input[2].toInt()),
                 cols = IntRange(Letters.indexOf(input[1]), Letters.indexOf(input[1])),
+                player = input[0].toCharArray().first()
             )
         }
     }
