@@ -7,9 +7,16 @@ fun main() {
 fun gameLoop(game: Game) {
     while(true){
         game.printer.fullGame()
-        val command = getInput()
-        game.handleCommmand(command)
+        turnLoop(game)
     }
+}
+
+fun turnLoop(game: Game) {
+    var moveMade: Boolean
+    do {
+        val command = getInput()
+        moveMade = game.handleCommmand(command)
+    } while (!moveMade)
 }
 
 
@@ -22,6 +29,6 @@ fun getInput(): Command {
        gameInput = GameInput(readln())
        if (!gameInput.validated) println("Failed to validate command")
     } while (!gameInput.validated)
-    
+
     return gameInput.interpret()
 }
