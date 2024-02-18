@@ -73,7 +73,7 @@ class GameInputTest {
            false,
             IntRange(1,1),
             IntRange(0,0),
-            '0'
+            0.toByte()
         )
         assertEquals(expected.rows,result.rows)
         assertEquals(expected.cols,result.cols)
@@ -89,7 +89,7 @@ class GameInputTest {
             false,
             IntRange(1,1),
             IntRange(0,0),
-            '1'
+            1.toByte()
         )
         assertEquals(expected.rows,result.rows)
         assertEquals(expected.cols,result.cols)

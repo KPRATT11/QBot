@@ -9,16 +9,16 @@ class GameTest{
     fun `should correctly move player when given correct command`(){
         val game = Game()
         val command: Command = GameInput("1,b,1").interpret()
-        val result = game.handleCommmand(command)
+        val result = game.handleCommand(command)
         assertEquals(result, true)
-        assertEquals(Pair(1,1), game.players.player1.pos)
+        assertEquals(Pair(1,1), game.players[1.toByte()]!!.pos)
     }
 
     @Test
     fun `should not process this command`(){
         val game = Game()
         val command: Command = GameInput("1,a,1").interpret()
-        val result = game.handleCommmand(command)
+        val result = game.handleCommand(command)
         assertEquals(result, false)
     }
 }

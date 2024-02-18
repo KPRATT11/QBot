@@ -10,14 +10,14 @@ class Game(
     private val letters = Letters.substring(0, boardSize * 2) //might need to make this importable
     val board = generateBoard()
     val printer = Printer(this, letters)
-    val players = Players(
-        player1 = Player(Pair(boardSize, 1), 9),
-        player2 = Player(Pair(boardSize, boardSize * 2 - 1), 9),
-        player1Turn = true
+
+    val players: HashMap<Byte, Player> = hashMapOf(
+        0.toByte() to Player(Pair(boardSize, 1), 9),
+        1.toByte() to Player(Pair(boardSize, boardSize * 2 - 1), 9),
     )
+    val playerTurn: Byte = 0.toByte()
 
-
-    fun handleCommmand(command: Command): Boolean {
+    fun handleCommand(command: Command): Boolean {
         return if (command.wall) {
             handleWallPlacement(command)
         } else {
@@ -54,16 +54,10 @@ class Game(
         }
         return true
     }
-
     private fun handlePlayerMovement(command: Command): Boolean {
         val endingPos = Pair(command.cols.first, command.rows.first)
-        if (command.player == '0'){
-            if (!validatePlayerMove(players.player1.pos, endingPos)) return false
-            players.player1.pos = endingPos
-        } else {
-            if (!validatePlayerMove(players.player2.pos, endingPos)) return false
-            players.player2.pos = endingPos
-        }
+        if (!validatePlayerMove(players[command.player]!!.pos, endingPos)) return false
+        players[command.player]!!.pos = endingPos
         return true
     }
 

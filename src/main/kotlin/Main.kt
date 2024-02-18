@@ -15,7 +15,7 @@ fun turnLoop(game: Game) {
     var moveMade: Boolean
     do {
         val command = getInput()
-        moveMade = game.handleCommmand(command)
+        moveMade = game.handleCommand(command)
     } while (!moveMade)
 }
 

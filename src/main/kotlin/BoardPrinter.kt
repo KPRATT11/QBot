@@ -12,13 +12,16 @@ class Printer(private val game: Game, private val letters: String) {
                     "."
                 }
             } else {
-                if (it.pos == game.players.player1.pos){
-                    "o"
-                } else if (it.pos == game.players.player2.pos) {
-                    "●"
-                }
-                else {
-                    "■"
+                when (it.pos) {
+                    game.players[0.toByte()]!!.pos -> {
+                        "o"
+                    }
+                    game.players[1.toByte()]!!.pos -> {
+                        "●"
+                    }
+                    else -> {
+                        "■"
+                    }
                 }
             }
         }.toString()
