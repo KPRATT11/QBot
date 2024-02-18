@@ -66,6 +66,38 @@ class GameInputTest {
     }
 
     @Test
+    fun `should interpret player movement command for player 1`() {
+        val input = GameInput("0,a,1")
+        val result = input.interpret()
+        val expected = Command(
+           false,
+            IntRange(1,1),
+            IntRange(0,0),
+            '0'
+        )
+        assertEquals(expected.rows,result.rows)
+        assertEquals(expected.cols,result.cols)
+        assertEquals(expected.wall,result.wall)
+        assertEquals(expected.player,result.player)
+    }
+
+    @Test
+    fun `should interpret player movement command for player 2`() {
+        val input = GameInput("1,a,1")
+        val result = input.interpret()
+        val expected = Command(
+            false,
+            IntRange(1,1),
+            IntRange(0,0),
+            '1'
+        )
+        assertEquals(expected.rows,result.rows)
+        assertEquals(expected.cols,result.cols)
+        assertEquals(expected.wall,result.wall)
+        assertEquals(expected.player,result.player)
+    }
+
+    @Test
     fun `should pass validation for command to move player with double digit number`() {
         val input = GameInput("1,a,17")
         val result = input.validateInput()
