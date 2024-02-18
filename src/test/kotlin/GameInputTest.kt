@@ -55,4 +55,21 @@ class GameInputTest {
         val expected = true
         assertEquals(expected, result)
     }
+
+
+    @Test
+    fun `should pass validation for command to move player 1`() {
+        val input = GameInput("0,a,1")
+        val result = input.validateInput()
+        val expected = true
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `should pass validation for command to move player with double digit number`() {
+        val input = GameInput("1,a,17")
+        val result = input.validateInput()
+        val expected = true
+        assertEquals(expected, result)
+    }
 }
