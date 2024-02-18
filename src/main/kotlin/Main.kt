@@ -1,7 +1,7 @@
 package org.example
 
 fun main() {
-    val newGame = Game(boardSize = 7)
+    val newGame = Game()
     gameLoop(newGame)
 }
 fun gameLoop(game: Game) {

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 class GameInputTest {
     @Test
     fun `should correctly interpret command for wall`() {
-        val input = GameInput("Wa1a4")
+        val input = GameInput("W,a,1,a,4")
         val result = input.interpret()
         val expected = Command(
             wall = true,
@@ -35,14 +35,14 @@ class GameInputTest {
     }
     @Test
     fun `should fail validation for command with incorrect pattern for wall`() {
-        val input = GameInput("W1a1d")
+        val input = GameInput("W,1,a,1,d")
         val result = input.validateInput()
         val expected = false
         assertEquals(expected, result)
     }
     @Test
     fun `should pass validation for command to place wall`() {
-        val input = GameInput("Wa1d1")
+        val input = GameInput("W,a,1,d,1")
         val result = input.validateInput()
         val expected = true
         assertEquals(expected, result)
@@ -50,7 +50,7 @@ class GameInputTest {
 
     @Test
     fun `should pass validation for command to move player`() {
-        val input = GameInput("1a1")
+        val input = GameInput("1,a,1")
         val result = input.validateInput()
         val expected = true
         assertEquals(expected, result)

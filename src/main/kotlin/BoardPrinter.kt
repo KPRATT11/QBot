@@ -14,7 +14,10 @@ class Printer(private val game: Game, private val letters: String) {
             } else {
                 if (it.pos == game.players.player1.pos){
                     "o"
-                } else {
+                } else if (it.pos == game.players.player2.pos) {
+                    "●"
+                }
+                else {
                     "■"
                 }
             }

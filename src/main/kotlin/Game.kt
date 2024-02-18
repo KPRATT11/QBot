@@ -11,8 +11,8 @@ class Game(
     val board = generateBoard()
     val printer = Printer(this, letters)
     val players = Players(
-        player1 = Player(Pair(boardSize - 1, 0), 9),
-        player2 = Player(Pair(boardSize - 1, boardSize), 9),
+        player1 = Player(Pair(boardSize, 1), 9),
+        player2 = Player(Pair(boardSize, boardSize * 2 - 1), 9),
         player1Turn = true
     )
 
